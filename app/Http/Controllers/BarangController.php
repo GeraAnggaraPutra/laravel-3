@@ -22,7 +22,7 @@ class BarangController extends Controller
      */
     public function index()
     {
-        // menampilkan semua data dari model Siswa
+        
         $barang = Barang::all();
         return view('barang.index', compact('barang'));
     }
@@ -50,9 +50,8 @@ class BarangController extends Controller
             'nama_pembeli' => 'required',
             'tanggal_pembelian' => 'required',
             'nama_barang' => 'required',
-            'harga_satuan' => 'required',
-            'jumlah_barang' => 'required',
-            'total_harga' => 'required',
+            'harga_satuan' => 'required|numeric',
+            'jumlah_barang' => 'required|numeric',
         ]);
 
         $barang = new Barang();
@@ -61,7 +60,7 @@ class BarangController extends Controller
         $barang->nama_barang = $request->nama_barang;
         $barang->harga_satuan = $request->harga_satuan;
         $barang->jumlah_barang = $request->jumlah_barang;
-        $barang->total_harga = $request->total_harga;
+        $barang->total_harga = $barang->harga_satuan * $barang->jumlah_barang;
         $barang->save();
         return redirect()->route('barang.index')
             ->with('success', 'Data berhasil dibuat!');
@@ -105,9 +104,8 @@ class BarangController extends Controller
             'nama_pembeli' => 'required',
             'tanggal_pembelian' => 'required',
             'nama_barang' => 'required',
-            'harga_satuan' => 'required',
-            'jumlah_barang' => 'required',
-            'total_harga' => 'required',
+            'harga_satuan' => 'required|numeric',
+            'jumlah_barang' => 'required|numeric',
         ]);
 
         $barang = Barang::findOrFail($id);
@@ -116,7 +114,7 @@ class BarangController extends Controller
         $barang->nama_barang = $request->nama_barang;
         $barang->harga_satuan = $request->harga_satuan;
         $barang->jumlah_barang = $request->jumlah_barang;
-        $barang->total_harga = $request->total_harga;
+        $barang->total_harga = $barang->harga_satuan * $barang->jumlah_barang;
         $barang->save();
         return redirect()->route('barang.index')
             ->with('success', 'Data berhasil diedit!');

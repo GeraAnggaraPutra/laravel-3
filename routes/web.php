@@ -30,3 +30,8 @@ Route::resource('siswa', SiswaController::class);
 
 // route barang
 Route::resource('barang', BarangController::class);
+
+// test template
+Route::get('test-template', function(){
+    return view('layouts.admin');
+});

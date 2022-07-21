@@ -1,4 +1,4 @@
-@extends('layouts.app2')
+@extends('layouts.app')
 
 @section('content')
     <div class="container">
@@ -24,7 +24,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Harga Satuan</label>
-                            <input type="text" class="form-control " name="nis" value="{{ $barang->harga_satuan }}"
+                            <input type="text" class="form-control " name="nis" value="{{ number_format($barang->harga_satuan,0,',','.') }}"
                                 readonly>
                         </div>
                         <div class="mb-3">
@@ -35,7 +35,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Total Harga</label>
-                            <input type="text" class="form-control" name="total_harga" value="{{ $barang->total_harga }}"
+                            <input type="text" class="form-control" name="total_harga" value="{{ number_format($barang->total_harga,0,',','.') }}"
                                 readonly>
                         </div>
                         <div class="mb-3">
