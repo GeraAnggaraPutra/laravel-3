@@ -4,7 +4,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">Data Wali
-                <a href="{{ rote('wali.create') }}" class="btn btn-sm btn-outline-primary" style="float: right">
+                <a href="{{ route('wali.create') }}" class="btn btn-sm btn-outline-primary" style="float: right">
                     Tambah Data
                 </a>
             </div>
